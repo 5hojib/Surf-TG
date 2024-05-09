@@ -4,7 +4,7 @@ from bot.helper.file_size import get_readable_file_size
 async def search(chat_id, query, page):
     posts = []
     async for post in UserBot.search_messages(chat_id=int(chat_id), limit=50, query=str(query), offset=(int(page) -1 ) * 50):
-        file = post.video or post.document
+        file = post.audio
         if not file:
             continue
         title = " ".join((file.file_name or post.caption or file.file_id)[:200].split(".")[:-1])
