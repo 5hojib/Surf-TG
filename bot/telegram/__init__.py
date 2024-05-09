@@ -7,8 +7,6 @@ StreamBot = Client(
     api_hash=Telegram.API_HASH,
     bot_token=Telegram.BOT_TOKEN,
     sleep_threshold=Telegram.SLEEP_THRESHOLD,
-    workers=Telegram.WORKERS,
-    max_concurrent_transmissions=1000
 )
 UserBot = Client(
     name='user',

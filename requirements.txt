@@ -2,7 +2,7 @@ aiofiles
 aiohttp
 aiohttp_session
 cryptography
-pyrofork
+git+https://github.com/5hojib/pyrogram.git@dev
 python-dotenv
 tgcrypto
 uvloop

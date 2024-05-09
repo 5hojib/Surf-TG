@@ -1,7 +1,7 @@
-from os import path as opath, getenv
-from logging import FileHandler, StreamHandler, INFO, basicConfig, error as log_error, info as log_info
+from os import path, getenv
+from logging import FileHandler, StreamHandler, INFO, basicConfig, error, info
 from logging.handlers import RotatingFileHandler
-from subprocess import run as srun
+from subprocess import run
 from dotenv import load_dotenv
 
 basicConfig(
@@ -15,16 +15,16 @@ basicConfig(
 )
 load_dotenv('config.env', override=True)
 
-UPSTREAM_REPO = getenv('UPSTREAM_REPO', "https://github.com/weebzone/Surf-TG")
+UPSTREAM_REPO = getenv('UPSTREAM_REPO', "https://github.com/5hojib/Surf-TG")
 UPSTREAM_BRANCH = getenv('UPSTREAM_BRANCH', "main")
 
 if UPSTREAM_REPO is not None:
-    if opath.exists('.git'):
-        srun(["rm", "-rf", ".git"])
+    if path.exists('.git'):
+        run(["rm", "-rf", ".git"])
         
-    update = srun([f"git init -q \
-                     && git config --global user.email drxxstrange@gmail.com \
-                     && git config --global user.name SilentDemonSD \
+    update = run([f"git init -q \
+                     && git config --global user.email yesiamshojib@gmail.com \
+                     && git config --global user.name 5hojib \
                      && git add . \
                      && git commit -sm update -q \
                      && git remote add origin {UPSTREAM_REPO} \
@@ -32,6 +32,6 @@ if UPSTREAM_REPO is not None:
                      && git reset --hard origin/{UPSTREAM_BRANCH} -q"], shell=True)
 
     if update.returncode == 0:
-        log_info('Successfully updated with latest commit from UPSTREAM_REPO')
+        info('Successfully updated with latest commit from UPSTREAM_REPO')
     else:
-        log_error('Something went wrong while updating, check UPSTREAM_REPO if valid or not!')
+        error('Something went wrong while updating, check UPSTREAM_REPO if valid or not!')

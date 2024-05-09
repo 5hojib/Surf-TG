@@ -15,5 +15,4 @@ class Telegram:
     USERNAME = getenv("USERNAME", "admin")
     PASSWORD = getenv("PASSWORD", "admin")
     SLEEP_THRESHOLD = int(getenv('SLEEP_THRESHOLD', '60'))
-    WORKERS = int(getenv('WORKERS', '10'))
     MULTI_CLIENT = bool(getenv('MULTI_CLIENT', 'False'))
