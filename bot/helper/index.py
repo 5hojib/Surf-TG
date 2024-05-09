@@ -5,7 +5,7 @@ from bot.helper.file_size import get_readable_file_size
 async def get_files(chat_id, page=1):
     posts = []
     async for post in UserBot.get_chat_history(chat_id=int(chat_id), limit=50, offset=(int(page) - 1) * 50):
-        file = post.video or post.document
+        file = post.audio
         if not file:
             continue
         title = " ".join((file.file_name or post.caption or file.file_id)[:200].split(".")[:-1])
